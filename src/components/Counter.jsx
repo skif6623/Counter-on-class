@@ -2,14 +2,14 @@ import React, {Component} from "react";
 import "./Counter.css";
 
 export class Сounter extends Component {
+	state = {
+		value: 0,
+	};
+
 	handleIncrement = e => {
-		console.log("Збільшили на 1");
-
-		const target = e.target;
-
-		setTimeout(() => {
-			console.log(target);
-		}, 1000);
+		this.setState({
+			value: 10,
+		});
 	};
 
 	handleDecrement = e => {
@@ -19,7 +19,7 @@ export class Сounter extends Component {
 	render() {
 		return (
 			<div className="Counter">
-				<span className="Counter__value">0</span>
+				<span className="Counter__value">{this.state.value}</span>
 				<div className="Counter__controls">
 					<button type="button" onClick={this.handleIncrement}>
 						Збільшити на 1
