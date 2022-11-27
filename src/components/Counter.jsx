@@ -2,12 +2,17 @@ import React, {Component} from "react";
 import "./Counter.css";
 
 export class Сounter extends Component {
-	handleIncrement = () => {
+	handleIncrement = e => {
 		console.log("Збільшили на 1");
-		console.log(this);
+
+		const target = e.target;
+
+		setTimeout(() => {
+			console.log(target);
+		}, 1000);
 	};
 
-	handleDecrement = () => {
+	handleDecrement = e => {
 		console.log("Зменшили на 1");
 		console.log(this);
 	};
