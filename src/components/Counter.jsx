@@ -7,14 +7,22 @@ export class Сounter extends Component {
 	};
 
 	handleIncrement = e => {
-		this.setState({
-			value: 10,
+		this.setState(currState => {
+			console.log(currState);
+			return {
+				value: currState.value + 1,
+			};
 		});
 	};
 
 	handleDecrement = e => {
-		console.log("Зменшили на 1");
-		console.log(this);
+		this.setState(currState => {
+			console.log(currState);
+
+			return {
+				value: currState.value - 1,
+			};
+		});
 	};
 	render() {
 		return (
