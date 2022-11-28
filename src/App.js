@@ -3,7 +3,7 @@ import {Сounter} from "./components/Counter";
 function App() {
 	return (
 		<div>
-			<Сounter />
+			<Сounter startedValue={4} />
 		</div>
 	);
 }

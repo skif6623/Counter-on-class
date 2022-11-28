@@ -3,12 +3,11 @@ import "./Counter.css";
 
 export class Сounter extends Component {
 	state = {
-		value: 0,
+		value: this.props.startedValue,
 	};
 
 	handleIncrement = e => {
 		this.setState(currState => {
-			console.log(currState);
 			return {
 				value: currState.value + 1,
 			};
@@ -17,8 +16,6 @@ export class Сounter extends Component {
 
 	handleDecrement = e => {
 		this.setState(currState => {
-			console.log(currState);
-
 			return {
 				value: currState.value - 1,
 			};
