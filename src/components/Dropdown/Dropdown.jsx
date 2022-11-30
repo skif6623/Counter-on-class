@@ -6,22 +6,17 @@ export class Dropdown extends Component {
 		visible: false,
 	};
 
-	show = () => {
-		this.setState({visible: true});
-	};
-
-	hide = () => {
-		this.setState({visible: false});
+	toggle = () => {
+		this.setState(prevState => ({
+			visible: !prevState.visible,
+		}));
 	};
 
 	render() {
 		return (
 			<div className="Dropdown">
-				<button type="button" className="Dropdown__toggle" onClick={this.show}>
-					Показати
-				</button>
-				<button type="button" className="Dropdown__toggle" onClick={this.hide}>
-					Заховати
+				<button type="button" className="Dropdown__toggle" onClick={this.toggle}>
+					{this.state.visible ? "Заховати" : "Показати"}
 				</button>
 
 				{this.state.visible && <div className="Dropdown__menu">Випадаюче меню</div>}
