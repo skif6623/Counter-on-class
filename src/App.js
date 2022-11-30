@@ -1,11 +1,10 @@
-import {Counter} from "./components/Counter/Counter";
-
-function App() {
+// import {Counter} from "./components/Counter/Counter";
+import {Dropdown} from "./components/Dropdown/Dropdown";
+export function App() {
 	return (
 		<div>
-			<Counter startedValue={4} />
+			{/* <Counter startedValue={4} /> */}
+			<Dropdown />
 		</div>
 	);
 }
-
-export default App;
