@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import "./Counter.css";
+import {Controls} from "./Controls";
 
-export class Сounter extends Component {
+export class Counter extends Component {
 	state = {
 		value: this.props.startedValue,
 	};
@@ -25,14 +26,7 @@ export class Сounter extends Component {
 		return (
 			<div className="Counter">
 				<span className="Counter__value">{this.state.value}</span>
-				<div className="Counter__controls">
-					<button type="button" onClick={this.handleIncrement}>
-						Збільшити на 1
-					</button>
-					<button type="button" onClick={this.handleDecrement}>
-						Зменшити на 1
-					</button>
-				</div>
+				<Controls onInc={this.handleIncrement} onDec={this.handleDecrement} />
 			</div>
 		);
 	}

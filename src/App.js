@@ -1,9 +1,10 @@
-import {Сounter} from "./components/Counter";
+import {Counter} from "./components/Counter";
+console.dir(Counter);
 
 function App() {
 	return (
 		<div>
-			<Сounter startedValue={4} />
+			<Counter startedValue={4} />
 		</div>
 	);
 }
