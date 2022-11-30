@@ -3,7 +3,17 @@ import "./ColorPicker.css";
 
 export class ColorPicker extends Component {
 	state = {
-		activeOptionIdx: 0,
+		activeOptionIdx: 4,
+	};
+
+	makeOptionClassName = index => {
+		const optionClasses = ["ColorPicker__option"];
+
+		if (index === this.state.activeOptionIdx) {
+			optionClasses.push("ColorPicker__option--active");
+		}
+
+		return optionClasses.join(" ");
 	};
 
 	render() {
@@ -12,15 +22,12 @@ export class ColorPicker extends Component {
 				<h2 className="ColorPicker__title">Color Picker</h2>
 				<div>
 					{this.props.options.map(({label, color}, index) => {
-						const optionClasses = ["ColorPicker__option"];
+						const optionsClasName = this.makeOptionClassName(index);
 
-						if (index === this.state.activeOptionIdx) {
-							optionClasses.push("ColorPicker__option--active");
-						}
 						return (
 							<button
 								key={label}
-								className={optionClasses.join(" ")}
+								className={optionsClasName}
 								style={{
 									backgroundColor: color,
 								}}
