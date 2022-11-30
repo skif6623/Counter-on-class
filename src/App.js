@@ -1,5 +1,4 @@
-import {Counter} from "./components/Counter";
-console.dir(Counter);
+import {Counter} from "./components/Counter/Counter";
 
 function App() {
 	return (
