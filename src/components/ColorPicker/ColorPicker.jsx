@@ -3,7 +3,7 @@ import "./ColorPicker.css";
 
 export class ColorPicker extends Component {
 	state = {
-		activeOptionIdx: 3,
+		activeOptionIdx: 0,
 	};
 
 	render() {
@@ -11,16 +11,22 @@ export class ColorPicker extends Component {
 			<div className="ColorPicker">
 				<h2 className="ColorPicker__title">Color Picker</h2>
 				<div>
-					{this.props.options.map(({label, color}, index) => (
-						<button
-							key={label}
-							className="ColorPicker__option"
-							style={{
-								backgroundColor: color,
-								border: index === this.state.activeOptionIdx ? "3px solid black" : "none",
-							}}
-						></button>
-					))}
+					{this.props.options.map(({label, color}, index) => {
+						const optionClasses = ["ColorPicker__option"];
+
+						if (index === this.state.activeOptionIdx) {
+							optionClasses.push("ColorPicker__option--active");
+						}
+						return (
+							<button
+								key={label}
+								className={optionClasses.join(" ")}
+								style={{
+									backgroundColor: color,
+								}}
+							></button>
+						);
+					})}
 				</div>
 			</div>
 		);
