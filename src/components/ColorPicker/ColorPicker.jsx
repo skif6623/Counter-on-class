@@ -16,10 +16,19 @@ export class ColorPicker extends Component {
 		return optionClasses.join(" ");
 	};
 
+	setActiveIdx = index => {
+		this.setState({activeOptionIdx: index});
+	};
+
 	render() {
+		const {options} = this.props;
+		const {activeOptionIdx} = this.state;
+		const {label} = options[activeOptionIdx];
+
 		return (
 			<div className="ColorPicker">
 				<h2 className="ColorPicker__title">Color Picker</h2>
+				<p>Вибраний колір: {label}</p>
 				<div>
 					{this.props.options.map(({label, color}, index) => {
 						const optionsClasName = this.makeOptionClassName(index);
@@ -31,6 +40,7 @@ export class ColorPicker extends Component {
 								style={{
 									backgroundColor: color,
 								}}
+								onClick={() => this.setActiveIdx(index)}
 							></button>
 						);
 					})}
