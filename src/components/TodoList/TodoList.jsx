@@ -1,11 +1,11 @@
 import {TodoListItem} from "./TodoList.styled.js";
-export const TodoList = ({todos}) => {
+export const TodoList = ({todos, onDeleteTodo}) => {
 	return (
 		<ul>
 			{todos.map(({id, text, completed}) => (
 				<TodoListItem key={id}>
 					<p>{text}</p>
-					<button>Видалити</button>
+					<button onClick={() => onDeleteTodo(id)}>Видалити</button>
 				</TodoListItem>
 			))}
 		</ul>

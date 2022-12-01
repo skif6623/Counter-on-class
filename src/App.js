@@ -17,13 +17,17 @@ export class App extends Component {
 		todos: initTodos,
 	};
 
+	deleteTodo = todoId => {
+		this.setState(prevState => ({todos: prevState.todos.filter(todo => todo.id !== todoId)}));
+	};
+
 	render() {
 		const {todos} = this.state;
 
 		return (
 			<>
 				<h1>Стан компонента</h1>
-				<TodoList todos={todos} />
+				<TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
 			</>
 		);
 	}
