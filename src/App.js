@@ -1,6 +1,7 @@
 // import {Counter} from "./components/Counter/Counter";
 // import {Dropdown} from "./components/Dropdown/Dropdown";
 import React, {Component} from "react";
+import {TodoList} from "./components/TodoList/TodoList";
 // import {ColorPicker} from "./components/ColorPicker/ColorPicker";
 // const colorPickerOptions = [
 // 	{label: "red", color: "#F44336"},
