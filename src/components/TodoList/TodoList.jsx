@@ -1,10 +1,12 @@
+import {TodoListItem} from "./TodoList.styled.js";
 export const TodoList = ({todos}) => {
 	return (
 		<ul>
 			{todos.map(({id, text, completed}) => (
-				<li key={id}>
+				<TodoListItem key={id}>
 					<p>{text}</p>
-				</li>
+					<button>Видалити</button>
+				</TodoListItem>
 			))}
 		</ul>
 	);

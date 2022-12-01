@@ -2,6 +2,7 @@
 // import {Dropdown} from "./components/Dropdown/Dropdown";
 import React, {Component} from "react";
 import {TodoList} from "./components/TodoList/TodoList";
+import initTodos from "./todos.json";
 // import {ColorPicker} from "./components/ColorPicker/ColorPicker";
 // const colorPickerOptions = [
 // 	{label: "red", color: "#F44336"},
@@ -13,11 +14,7 @@ import {TodoList} from "./components/TodoList/TodoList";
 // ];
 export class App extends Component {
 	state = {
-		todos: [
-			{id: "id-1", text: "Выучить основы React", completed: true},
-			{id: "id-2", text: "Разобраться с React Router", completed: false},
-			{id: "id-3", text: "Пережить Redux", completed: false},
-		],
+		todos: initTodos,
 	};
 
 	render() {
