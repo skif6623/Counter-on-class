@@ -24,9 +24,19 @@ export class App extends Component {
 	render() {
 		const {todos} = this.state;
 
+		const completeTodos = todos.reduce((total, todo) => (todo.completed ? total + 1 : total), 0);
+
 		return (
 			<>
 				<h1>Стан компонента</h1>
+				<ul>
+					<li>
+						<p>Загальна к-сть: {todos.length}</p>
+					</li>
+					<li>
+						<p>Виконані: {completeTodos} </p>
+					</li>
+				</ul>
 				<TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
 			</>
 		);
