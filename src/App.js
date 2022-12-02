@@ -2,6 +2,7 @@
 // import {Dropdown} from "./components/Dropdown/Dropdown";
 import React, { Component } from 'react';
 import { TodoList } from './components/TodoList/TodoList';
+import { TodoEditor } from './components/TodoEditor/TodoEditor';
 import initTodos from './todos.json';
 // import { Form } from './components/Form/Form';
 // import { ColorPicker } from './components/ColorPicker/ColorPicker';
@@ -16,6 +17,10 @@ import initTodos from './todos.json';
 export class App extends Component {
   state = {
     todos: initTodos,
+  };
+
+  addTodo = todoText => {
+    console.log('todoText', todoText);
   };
 
   deleteTodo = todoId => {
@@ -50,6 +55,7 @@ export class App extends Component {
       <>
         {/* <ColorPicker options={colorPickerOptions} /> */}
         {/* <Form submit={this.formSubmitHandler} /> */}
+        <TodoEditor onSubmitForm={this.addTodo} />
         <h1>Стан компонента</h1>
         <ul>
           <li>
