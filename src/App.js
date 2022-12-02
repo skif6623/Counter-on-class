@@ -1,5 +1,6 @@
 // import {Counter} from "./components/Counter/Counter";
 // import {Dropdown} from "./components/Dropdown/Dropdown";
+import shortid from 'shortid';
 import React, { Component } from 'react';
 import { TodoList } from './components/TodoList/TodoList';
 import { TodoEditor } from './components/TodoEditor/TodoEditor';
@@ -19,8 +20,18 @@ export class App extends Component {
     todos: initTodos,
   };
 
-  addTodo = todoText => {
-    console.log('todoText', todoText);
+  addTodo = text => {
+    const todo = {
+      id: shortid.generate(),
+      text,
+      completed: false,
+    };
+
+    this.setState(({ todos }) => ({
+      todos: [todo, ...todos],
+    }));
+
+    console.log();
   };
 
   deleteTodo = todoId => {
