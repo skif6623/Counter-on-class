@@ -4,6 +4,13 @@ export class Form extends Component {
   state = {
     name: '',
     tag: '',
+    license: false,
+  };
+
+  handleLicenceChange = e => {
+    console.log(e.currentTarget.checked);
+
+    this.setState({ license: !this.state.license });
   };
 
   handleChange = e => {
@@ -49,7 +56,16 @@ export class Form extends Component {
             onChange={this.handleChange}
           />
         </label>
-        <button>Відправити</button>
+        <label>
+          Приймаю умови користування
+          <input
+            type="checkbox"
+            name="licence"
+            checked={this.state.license}
+            onChange={this.handleLicenceChange}
+          />
+        </label>
+        <button disabled={!this.state.license}>Відправити</button>
       </form>
     );
   }
