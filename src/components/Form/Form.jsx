@@ -65,7 +65,9 @@ export class Form extends Component {
             onChange={this.handleLicenceChange}
           />
         </label>
-        <button disabled={!this.state.license}>Відправити</button>
+        <button type="submit" disabled={!this.state.license}>
+          Відправити
+        </button>
       </form>
     );
   }
