@@ -1,8 +1,9 @@
 // import {Counter} from "./components/Counter/Counter";
 // import {Dropdown} from "./components/Dropdown/Dropdown";
-import React, {Component} from "react";
-import {TodoList} from "./components/TodoList/TodoList";
-import initTodos from "./todos.json";
+import React, { Component } from 'react';
+// import { TodoList } from './components/TodoList/TodoList';
+import initTodos from './todos.json';
+import { Form } from './components/Form/Form';
 // import {ColorPicker} from "./components/ColorPicker/ColorPicker";
 // const colorPickerOptions = [
 // 	{label: "red", color: "#F44336"},
@@ -13,22 +14,29 @@ import initTodos from "./todos.json";
 // 	{label: "indigo", color: "#3F51B5"},
 // ];
 export class App extends Component {
-	state = {
-		todos: initTodos,
-	};
+  state = {
+    todos: initTodos,
+  };
 
-	deleteTodo = todoId => {
-		this.setState(prevState => ({todos: prevState.todos.filter(todo => todo.id !== todoId)}));
-	};
+  deleteTodo = todoId => {
+    this.setState(prevState => ({
+      todos: prevState.todos.filter(todo => todo.id !== todoId),
+    }));
+  };
 
-	render() {
-		const {todos} = this.state;
+  formSubmitHandler = data => {
+    console.log('Дані які приходять з форми', data);
+  };
 
-		const completeTodos = todos.reduce((total, todo) => (todo.completed ? total + 1 : total), 0);
+  render() {
+    // const {todos} = this.state;
 
-		return (
-			<>
-				<h1>Стан компонента</h1>
+    // const completeTodos = todos.reduce((total, todo) => (todo.completed ? total + 1 : total), 0);
+
+    return (
+      <>
+        <Form submit={this.formSubmitHandler} />
+        {/* <h1>Стан компонента</h1>
 				<ul>
 					<li>
 						<p>Загальна к-сть: {todos.length}</p>
@@ -37,8 +45,8 @@ export class App extends Component {
 						<p>Виконані: {completeTodos} </p>
 					</li>
 				</ul>
-				<TodoList todos={todos} onDeleteTodo={this.deleteTodo} />
-			</>
-		);
-	}
+				<TodoList todos={todos} onDeleteTodo={this.deleteTodo} /> */}
+      </>
+    );
+  }
 }
