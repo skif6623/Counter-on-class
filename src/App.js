@@ -6,6 +6,7 @@ import { TodoList } from './components/TodoList/TodoList';
 import { TodoEditor } from './components/TodoEditor/TodoEditor';
 import initTodos from './todos.json';
 import { Modal } from './components/Modal/Modal';
+import { Clock } from './components/Clock/Clock';
 // import { Form } from './components/Form/Form';
 // import { ColorPicker } from './components/ColorPicker/ColorPicker';
 // const colorPickerOptions = [
@@ -88,9 +89,10 @@ export class App extends Component {
     return (
       <>
         <button type="button" onClick={this.toggleModal}>
-          Відкрити модальне вікно
+          показати годину
         </button>
-        {showModal && (
+        {showModal && <Clock />}
+        {/* {showModal && (
           <Modal close={this.toggleModal}>
             <h1>Заголовок для модального вікна</h1>
             <p>
@@ -107,10 +109,10 @@ export class App extends Component {
               закрити модальне вікно
             </button>
           </Modal>
-        )}
+        )} */}
         {/* <ColorPicker options={colorPickerOptions} /> */}
         {/* <Form submit={this.formSubmitHandler} /> */}
-        <TodoEditor onSubmitForm={this.addTodo} />
+        {/* <TodoEditor onSubmitForm={this.addTodo} />
         <h1>Стан компонента</h1>
         <ul>
           <li>
@@ -124,7 +126,7 @@ export class App extends Component {
           todos={todos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
+        /> */}
       </>
     );
   }
