@@ -53,11 +53,17 @@ export class App extends Component {
   formSubmitHandler = data => {
     console.log('Дані які приходять з форми', data);
   };
+  componentDidMount() {
+    const todos = localStorage.getItem('todos');
+    const parsedTodos = JSON.parse(todos);
+
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
+    }
+  }
 
   componentDidUpdate(prevState, prevProps) {
     if (prevState.todos !== this.state.todos) {
-      console.log('стейт обновлено');
-
       localStorage.setItem('todos', JSON.stringify(this.state.todos));
     }
   }
