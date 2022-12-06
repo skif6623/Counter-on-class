@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { TodoList } from './components/TodoList/TodoList';
 import { TodoEditor } from './components/TodoEditor/TodoEditor';
 import initTodos from './todos.json';
+import { Modal } from './components/Modal/Modal';
 // import { Form } from './components/Form/Form';
 // import { ColorPicker } from './components/ColorPicker/ColorPicker';
 // const colorPickerOptions = [
@@ -18,7 +19,23 @@ import initTodos from './todos.json';
 export class App extends Component {
   state = {
     todos: initTodos,
+    showModal: false,
   };
+
+  componentDidMount() {
+    const todos = localStorage.getItem('todos');
+    const parsedTodos = JSON.parse(todos);
+
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
+    }
+  }
+
+  componentDidUpdate(prevState, prevProps) {
+    if (prevState.todos !== this.state.todos) {
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+  }
 
   addTodo = text => {
     const todo = {
@@ -53,23 +70,15 @@ export class App extends Component {
   formSubmitHandler = data => {
     console.log('Дані які приходять з форми', data);
   };
-  componentDidMount() {
-    const todos = localStorage.getItem('todos');
-    const parsedTodos = JSON.parse(todos);
 
-    if (parsedTodos) {
-      this.setState({ todos: parsedTodos });
-    }
-  }
-
-  componentDidUpdate(prevState, prevProps) {
-    if (prevState.todos !== this.state.todos) {
-      localStorage.setItem('todos', JSON.stringify(this.state.todos));
-    }
-  }
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
 
   render() {
-    const { todos } = this.state;
+    const { todos, showModal } = this.state;
 
     const completeTodos = todos.reduce(
       (total, todo) => (todo.completed ? total + 1 : total),
@@ -80,7 +89,7 @@ export class App extends Component {
       <>
         {/* <ColorPicker options={colorPickerOptions} /> */}
         {/* <Form submit={this.formSubmitHandler} /> */}
-        <TodoEditor onSubmitForm={this.addTodo} />
+        {/* <TodoEditor onSubmitForm={this.addTodo} />
         <h1>Стан компонента</h1>
         <ul>
           <li>
@@ -94,7 +103,8 @@ export class App extends Component {
           todos={todos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
+        /> */}
+        {showModal && <Modal />}
       </>
     );
   }
