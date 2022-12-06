@@ -2,11 +2,13 @@
 // import {Dropdown} from "./components/Dropdown/Dropdown";
 import shortid from 'shortid';
 import React, { Component } from 'react';
-import { TodoList } from './components/TodoList/TodoList';
-import { TodoEditor } from './components/TodoEditor/TodoEditor';
+// import { TodoList } from './components/TodoList/TodoList';
+// import { TodoEditor } from './components/TodoEditor/TodoEditor';
 import initTodos from './todos.json';
-import { Modal } from './components/Modal/Modal';
-import { Clock } from './components/Clock/Clock';
+// import { Modal } from './components/Modal/Modal';
+// import { Clock } from './components/Clock/Clock';
+import { Tabs } from './components/Tabs/Tabs';
+import tabs from './tabs.json';
 // import { Form } from './components/Form/Form';
 // import { ColorPicker } from './components/ColorPicker/ColorPicker';
 // const colorPickerOptions = [
@@ -88,10 +90,11 @@ export class App extends Component {
 
     return (
       <>
-        <button type="button" onClick={this.toggleModal}>
+        {/* <button type="button" onClick={this.toggleModal}>
           показати годину
-        </button>
-        {showModal && <Clock />}
+        </button> */}
+        <Tabs tabs={tabs} />
+        {/* {showModal && <Clock />} */}
         {/* {showModal && (
           <Modal close={this.toggleModal}>
             <h1>Заголовок для модального вікна</h1>
