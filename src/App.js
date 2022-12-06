@@ -87,8 +87,11 @@ export class App extends Component {
 
     return (
       <>
+        <button type="button" onClick={this.toggleModal}>
+          Відкрити модальне вікно
+        </button>
         {showModal && (
-          <Modal>
+          <Modal close={this.toggleModal}>
             <h1>Заголовок для модального вікна</h1>
             <p>
               lorems dfjshdfsjd klsdhfjsd fjkhfskd fljhfjoshd f;slj djsfhsjkdhf
@@ -122,9 +125,6 @@ export class App extends Component {
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
         />
-        <button type="button" onClick={this.toggleModal}>
-          Відкрити модальне вікно
-        </button>
       </>
     );
   }

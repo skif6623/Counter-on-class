@@ -3,15 +3,27 @@ import { createPortal } from 'react-dom';
 import { ModalStyled, Backdrop } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
-console.log(modalRoot);
 
 export class Modal extends Component {
   componentDidMount() {
     console.log('didMount');
+    window.addEventListener('keydown', this.handleKeyDown);
   }
   componentDidUpdate() {
     console.log('DidUpdate');
   }
+
+  componentWillUnmount() {
+    console.log('umount');
+    window.removeEventListener('keydown', this.handleKeyDown);
+  }
+
+  handleKeyDown = e => {
+    if (e.code === 'Escape') {
+      console.log('закрили модалку');
+      this.props.close();
+    }
+  };
 
   render() {
     return createPortal(
