@@ -25,9 +25,15 @@ export class Modal extends Component {
     }
   };
 
+  handleBackdrop = e => {
+    if (e.currentTarget === e.target) {
+      this.props.close();
+    }
+  };
+
   render() {
     return createPortal(
-      <Backdrop>
+      <Backdrop onClick={this.handleBackdrop}>
         <ModalStyled>{this.props.children}</ModalStyled>
       </Backdrop>,
       modalRoot
