@@ -107,7 +107,24 @@ export class App extends Component {
         <button type="button" onClick={this.toggleModal}>
           Відкрити модальне вікно
         </button>
-        {showModal && <Modal />}
+        {showModal && (
+          <Modal>
+            <h1>Заголовок для модального вікна</h1>
+            <p>
+              lorems dfjshdfsjd klsdhfjsd fjkhfskd fljhfjoshd f;slj djsfhsjkdhf
+              s;df jksdhfjkshdfk asdjhjksdfhkjashdjfh sjkhf sdkljfh sdjkfhsfh
+              lorems dfjshdfsjd klsdhfjsd fjkhfskd fljhfjoshd f;slj djsfhsjkdhf
+              s;df jksdhfjkshdfk asdjhjksdfhkjashdjfh sjkhf sdkljfh sdjkfhsfh
+              lorems dfjshdfsjd klsdhfjsd fjkhfskd fljhfjoshd f;slj djsfhsjkdhf
+              s;df jksdhfjkshdfk asdjhjksdfhkjashdjfh sjkhf sdkljfh sdjkfhsfh
+              lorems dfjshdfsjd klsdhfjsd fjkhfskd fljhfjoshd f;slj djsfhsjkdhf
+              s;df jksdhfjkshdfk asdjhjksdfhkjashdjfh sjkhf sdkljfh sdjkfhsfh
+            </p>
+            <button type="button" onClick={this.toggleModal}>
+              закрими модальне вікно
+            </button>
+          </Modal>
+        )}
       </>
     );
   }
