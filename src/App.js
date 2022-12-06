@@ -104,6 +104,9 @@ export class App extends Component {
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
         /> */}
+        <button type="button" onClick={this.toggleModal}>
+          Відкрити модальне вікно
+        </button>
         {showModal && <Modal />}
       </>
     );
