@@ -87,26 +87,6 @@ export class App extends Component {
 
     return (
       <>
-        {/* <ColorPicker options={colorPickerOptions} /> */}
-        {/* <Form submit={this.formSubmitHandler} /> */}
-        {/* <TodoEditor onSubmitForm={this.addTodo} />
-        <h1>Стан компонента</h1>
-        <ul>
-          <li>
-            <p>Загальна к-сть: {todos.length}</p>
-          </li>
-          <li>
-            <p>Виконані: {completeTodos} </p>
-          </li>
-        </ul>
-        <TodoList
-          todos={todos}
-          onDeleteTodo={this.deleteTodo}
-          onToggleCompleted={this.toggleCompleted}
-        /> */}
-        <button type="button" onClick={this.toggleModal}>
-          Відкрити модальне вікно
-        </button>
         {showModal && (
           <Modal>
             <h1>Заголовок для модального вікна</h1>
@@ -121,10 +101,30 @@ export class App extends Component {
               s;df jksdhfjkshdfk asdjhjksdfhkjashdjfh sjkhf sdkljfh sdjkfhsfh
             </p>
             <button type="button" onClick={this.toggleModal}>
-              закрими модальне вікно
+              закрити модальне вікно
             </button>
           </Modal>
         )}
+        {/* <ColorPicker options={colorPickerOptions} /> */}
+        {/* <Form submit={this.formSubmitHandler} /> */}
+        <TodoEditor onSubmitForm={this.addTodo} />
+        <h1>Стан компонента</h1>
+        <ul>
+          <li>
+            <p>Загальна к-сть: {todos.length}</p>
+          </li>
+          <li>
+            <p>Виконані: {completeTodos} </p>
+          </li>
+        </ul>
+        <TodoList
+          todos={todos}
+          onDeleteTodo={this.deleteTodo}
+          onToggleCompleted={this.toggleCompleted}
+        />
+        <button type="button" onClick={this.toggleModal}>
+          Відкрити модальне вікно
+        </button>
       </>
     );
   }
