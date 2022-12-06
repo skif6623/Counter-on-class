@@ -54,6 +54,14 @@ export class App extends Component {
     console.log('Дані які приходять з форми', data);
   };
 
+  componentDidUpdate(prevState, prevProps) {
+    if (prevState.todos !== this.state.todos) {
+      console.log('стейт обновлено');
+
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+  }
+
   render() {
     const { todos } = this.state;
 
