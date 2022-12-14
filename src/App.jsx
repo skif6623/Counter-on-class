@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { TodoList } from './components/TodoList/TodoList';
 import { TodoEditor } from './components/TodoEditor/TodoEditor';
 import initTodos from './todos.json';
+import { SignupForm } from './components/SignupForm/SignupForm';
 // import { Form } from './components/Form/Form';
 // import { ColorPicker } from './components/ColorPicker/ColorPicker';
 // const colorPickerOptions = [
@@ -18,6 +19,7 @@ import initTodos from './todos.json';
 export class App extends Component {
   state = {
     todos: initTodos,
+    filter: '',
   };
 
   addTodo = text => {
@@ -30,8 +32,10 @@ export class App extends Component {
     this.setState(({ todos }) => ({
       todos: [todo, ...todos],
     }));
+  };
 
-    console.log();
+  changeFilter = e => {
+    this.setState({ filter: e.currentTarget.value });
   };
 
   deleteTodo = todoId => {
@@ -55,7 +59,7 @@ export class App extends Component {
   };
 
   render() {
-    const { todos } = this.state;
+    const { todos, filter } = this.state;
 
     const completeTodos = todos.reduce(
       (total, todo) => (todo.completed ? total + 1 : total),
@@ -64,9 +68,19 @@ export class App extends Component {
 
     return (
       <>
+        <SignupForm />
         {/* <ColorPicker options={colorPickerOptions} /> */}
         {/* <Form submit={this.formSubmitHandler} /> */}
-        <TodoEditor onSubmitForm={this.addTodo} />
+        {/* <TodoEditor onSubmitForm={this.addTodo} />
+        <label>
+          Фільтр по імені
+          <input
+            type="text"
+            name="filter"
+            value={filter}
+            onChange={this.changeFilter}
+          />
+        </label>
         <h1>Стан компонента</h1>
         <ul>
           <li>
@@ -80,7 +94,7 @@ export class App extends Component {
           todos={todos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
+        /> */}
       </>
     );
   }
