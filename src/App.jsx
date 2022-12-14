@@ -2,8 +2,8 @@
 // import {Dropdown} from "./components/Dropdown/Dropdown";
 import shortid from 'shortid';
 import React, { Component } from 'react';
-import { TodoList } from './components/TodoList/TodoList';
-import { TodoEditor } from './components/TodoEditor/TodoEditor';
+// import { TodoList } from './components/TodoList/TodoList';
+// import { TodoEditor } from './components/TodoEditor/TodoEditor';
 import initTodos from './todos.json';
 import { SignupForm } from './components/SignupForm/SignupForm';
 // import { Form } from './components/Form/Form';
@@ -21,6 +21,21 @@ export class App extends Component {
     todos: initTodos,
     filter: '',
   };
+
+  componentDidMount() {
+    const todos = localStorage.getItem('todos');
+    const parsedTodos = JSON.parse(todos);
+
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
+    }
+  }
+
+  componentDidUpdate(prevState, prevProps) {
+    if (prevState.todos !== this.state.todos) {
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+  }
 
   addTodo = text => {
     const todo = {
@@ -56,6 +71,12 @@ export class App extends Component {
 
   formSubmitHandler = data => {
     console.log('Дані які приходять з форми', data);
+  };
+
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
   };
 
   render() {
