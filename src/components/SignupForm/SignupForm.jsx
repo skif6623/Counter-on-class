@@ -1,9 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './SignupForm.module.css';
 
+function useLocalSrotage(key, defaultProps) {
+  const [state, setState] = useState(
+    JSON.parse(localStorage.getItem(key)),
+    defaultProps
+  );
+
+  useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(state), [state, key]);
+  });
+
+  return [state, setState];
+}
+
 export function SignupForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useLocalSrotage('email', '');
+  const [password, setPassword] = useLocalSrotage('password', '');
+
+  useEffect(() => {
+    window.localStorage.setItem('email', JSON.stringify(email), [email]);
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem('password', JSON.stringify(password), [
+      password,
+    ]);
+  });
 
   const handleChange = e => {
     const { name, value } = e.target;

@@ -68,8 +68,8 @@ export class App extends Component {
 
     return (
       <>
-        {/* <SignupForm /> */}
-        <ColorPicker options={colorPickerOptions} />
+        <SignupForm />
+        {/* <ColorPicker options={colorPickerOptions} /> */}
         {/* <Form submit={this.formSubmitHandler} /> */}
         {/* <TodoEditor onSubmitForm={this.addTodo} />
         <label>
