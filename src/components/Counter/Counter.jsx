@@ -1,34 +1,37 @@
-import React, {Component} from "react";
-import "./Counter.css";
-import {Controls} from "./Controls";
-import {Value} from "./Value";
+import { useState, useReducer } from 'react';
+import './Counter.css';
 
-export class Counter extends Component {
-	state = {
-		value: this.props.startedValue,
-	};
+function countReducer(state, actions) {
+  switch (actions.type) {
+    case 'increment':
+      return state + actions.payload;
 
-	handleIncrement = e => {
-		this.setState(currState => {
-			return {
-				value: currState.value + 1,
-			};
-		});
-	};
+    case 'decrement':
+      return state - actions.payload;
 
-	handleDecrement = e => {
-		this.setState(currState => {
-			return {
-				value: currState.value - 1,
-			};
-		});
-	};
-	render() {
-		return (
-			<div className="Counter">
-				<Value value={this.state.value} />
-				<Controls onInc={this.handleIncrement} onDec={this.handleDecrement} />
-			</div>
-		);
-	}
+    default:
+      return state;
+  }
+}
+
+export function Counter() {
+  const [count, dispatch] = useReducer(countReducer, 0);
+
+  return (
+    <div className="Counter">
+      <p>{count}</p>
+      <button
+        type="button"
+        onClick={() => dispatch({ type: 'decrement', payload: 1 })}
+      >
+        Зменшити на 1
+      </button>
+      <button
+        type="button"
+        onClick={() => dispatch({ type: 'increment', payload: 1 })}
+      >
+        Збільшити на 1
+      </button>
+    </div>
+  );
 }

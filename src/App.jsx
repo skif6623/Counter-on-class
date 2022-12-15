@@ -1,4 +1,3 @@
-// import {Counter} from "./components/Counter/Counter";
 // import {Dropdown} from "./components/Dropdown/Dropdown";
 import shortid from 'shortid';
 import React, { Component } from 'react';
@@ -10,6 +9,7 @@ import { SignupForm } from './components/SignupForm/SignupForm';
 import { ColorPicker } from './components/ColorPicker/ColorPicker';
 import { Clock } from './components/Clock/Clock';
 import { SkipEffect } from './components/SkipEvent/SkipEvent';
+import { Counter } from './components/Counter/Counter';
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
   { label: 'green', color: '#4CAF50' },
@@ -82,7 +82,7 @@ export class App extends Component {
   };
 
   render() {
-    const { todos, filter } = this.state;
+    const { todos, filter, value } = this.state;
 
     const completeTodos = todos.reduce(
       (total, todo) => (todo.completed ? total + 1 : total),
@@ -91,7 +91,8 @@ export class App extends Component {
 
     return (
       <>
-        <SkipEffect />
+        <Counter />
+        {/* <SkipEffect /> */}
         {/* <Clock /> */}
         {/* <SignupForm /> */}
         {/* <ColorPicker options={colorPickerOptions} /> */}

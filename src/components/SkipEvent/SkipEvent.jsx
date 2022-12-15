@@ -5,13 +5,13 @@ export function SkipEffect() {
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      console.log(isFirstRender.current);
+    if (isFirstRender.current === true) {
+      // console.log(isFirstRender.current);
       isFirstRender.current = false;
       return;
     }
     console.log(`Виконується useEffect - ${Date.now()}`);
-  });
+  }, [count]);
 
   return (
     <div>
