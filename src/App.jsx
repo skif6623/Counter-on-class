@@ -9,6 +9,7 @@ import { SignupForm } from './components/SignupForm/SignupForm';
 // import { Form } from './components/Form/Form';
 import { ColorPicker } from './components/ColorPicker/ColorPicker';
 import { Clock } from './components/Clock/Clock';
+import { SkipEffect } from './components/SkipEvent/SkipEvent';
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
   { label: 'green', color: '#4CAF50' },
@@ -90,7 +91,8 @@ export class App extends Component {
 
     return (
       <>
-        <Clock />
+        <SkipEffect />
+        {/* <Clock /> */}
         {/* <SignupForm /> */}
         {/* <ColorPicker options={colorPickerOptions} /> */}
         {/* <Form submit={this.formSubmitHandler} /> */}
