@@ -8,6 +8,7 @@ import initTodos from './todos.json';
 import { SignupForm } from './components/SignupForm/SignupForm';
 // import { Form } from './components/Form/Form';
 import { ColorPicker } from './components/ColorPicker/ColorPicker';
+import { Clock } from './components/Clock/Clock';
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
   { label: 'green', color: '#4CAF50' },
@@ -89,7 +90,8 @@ export class App extends Component {
 
     return (
       <>
-        <SignupForm />
+        <Clock />
+        {/* <SignupForm /> */}
         {/* <ColorPicker options={colorPickerOptions} /> */}
         {/* <Form submit={this.formSubmitHandler} /> */}
         {/* <TodoEditor onSubmitForm={this.addTodo} />
